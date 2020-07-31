@@ -36,5 +36,5 @@ def detect_language(text, result_language='en'):
     raw_result = driver.find_element_by_class_name("jfk-button-checked").get_attribute('innerHTML')
     result = raw_result.split(' - ')[0]
     if result == 'Detect language':
-        result = detect_language(text)
+        result = detect_language(text, result_language=result_language)
     return result

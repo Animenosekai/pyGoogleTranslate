@@ -1,4 +1,4 @@
-# python-google-translate
+# pyGoogleTranslate
  A python module for Google Translate (without using the API)
 
 ### This module lets you get two things:
@@ -30,6 +30,31 @@ But you also need to install [PhantomJS](https://phantomjs.org/download.html)
 On macOS, you can install it with Homebrew:
 ```bash
 brew cask install phantomjs
+```
+
+
+### Usage
+
+```python
+import pyGoogleTranslate
+
+>>> pyGoogleTranslate.translate('Hello', 'ja')
+'こんにちは'
+
+>>> pyGoogleTranslate.translate('Bonjour', source_language='fr', destination_language='en')
+'Hello'
+
+>>> pyGoogleTranslate.detect_language('Hola')
+'Spanish'
+
+>>> pyGoogleTranslate.detect_language('Hola', 'es')
+'español'
+
+>>> pyGoogleTranslate.detect_language('Nihao')
+'Chinese'
+
+>>> pyGoogleTranslate.detect_language('Kono Python module wo daunrodo itadaki makoto ni arigatogozaimashita')
+'Japanese'
 ```
 
 ### Dependencies
