@@ -1,6 +1,8 @@
 # pyGoogleTranslate
  A python module for Google Translate (without using the API)
 
+> It lets you use Google Translate (translation, transliteration, defintion, language detection, etc.) by parsing the website.
+
 ### This module lets you get four things:
 
 - translate(text, destination_language, source_language)
