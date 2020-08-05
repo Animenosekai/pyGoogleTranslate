@@ -60,13 +60,6 @@ Kills the browser process in use.
 
 This needs to be call at the end of the execution of your program or when you plan to stop python because the browser will still be opened even if you shut down Python if you don't (which can results in multiple browsers opened even if you don't use them until you manually kills them in your activity monitor).
 
-- google_translate_domain(domain)
-
-Changes the used google translate domain name (i.e translate.google.com) to the given domain (i.e translate.google.co.jp)
-
-    domain (default: translate.google.com): The domain name to use.
-
-Returns a string (the domain name).
 
 ### Installation
 You can install pyGoogleTranslate via `PIP` the Python Package Index Manager.
