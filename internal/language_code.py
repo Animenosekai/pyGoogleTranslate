@@ -1,3 +1,9 @@
+"""
+Used to verify language codes/translate from language name to language code (i.e french --> fr)
+
+© Anime no Sekai - 2020
+"""
+
 from . import google_translate_data
 
 class LanguageCodeError(Exception):

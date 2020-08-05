@@ -19,7 +19,6 @@ from selenium.common.exceptions import NoSuchElementException
 
 from internal.caching import search_translation_cache, add_translation_cache
 from internal.language_code import verify_language_code
-from internal import google_translate_data
 
 
 class BrowserError(Exception):

@@ -1,5 +1,7 @@
 """
+Setting the Google Translate domain name used by pyGoogleTranslate.
 
+© Anime no Sekai - 2020
 """
 
 from . import google_translate_data
