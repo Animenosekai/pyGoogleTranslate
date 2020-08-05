@@ -19,7 +19,6 @@ from selenium.common.exceptions import NoSuchElementException
 
 from internal.caching import search_translation_cache, add_translation_cache
 from internal.language_code import verify_language_code
-from internal.domain import gt_domain
 from internal import google_translate_data
 
 
@@ -126,6 +125,7 @@ def translate(text, destination_language, source_language="auto", cache=False, d
     Returns a string with the text translated.\n
     Returns "An error occured while translating: translation not found." if the translation was not found in the webpage. This might come from a mistyped language code.
     """
+    from internal.domain import gt_domain
     global last_translation
     if debug:
         write_file('logs.txt', today() + ' ' + current_time() + f'   text={text}｜sl={source_language}｜dl={destination_language} - Starting Translation...\n', append=True)
@@ -273,6 +273,7 @@ def detect_language(text, result_language='en'):
     """
     Returns the language of the given text.
     """
+    from internal.domain import gt_domain
     if driver is None:
         raise BrowserError("Browser is not set yet.\n Please set it with browser()")
     if not connected:
@@ -294,6 +295,7 @@ def transliterate(text, source_language="auto"):
     Returns the transliteration provided by Google Translate (if available)\n
     i.e Ohayou --> おはよう / おはよう --> Ohayou
     """
+    from internal.domain import gt_domain
     if driver is None:
         raise BrowserError("Browser is not set yet.\n Please set it with browser()")
     if not connected:
@@ -311,6 +313,7 @@ def definition(text, source_language="auto"):
     """
     Returns the word type (i.e Interjection, Noun), defintion (if available) and sentence example where the word could be used (if available)
     """
+    from internal.domain import gt_domain
     if driver is None:
         raise BrowserError("Browser is not set yet.\n Please set it with browser()")
     if not connected:

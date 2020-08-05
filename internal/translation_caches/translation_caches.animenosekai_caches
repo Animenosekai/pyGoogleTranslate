@@ -1,3 +1,5 @@
+[LANGUAGE NAME CACHES]
+
 [sl=en]｜[dl=af]｜[source=afrikaans]｜[result=afrikaans]
 [sl=en]｜[dl=sq]｜[source=afrikaans]｜[result=afrikaans]
 [sl=en]｜[dl=am]｜[source=afrikaans]｜[result=አፍሪካንስ]
@@ -11234,9 +11236,6 @@
 [sl=en]｜[dl=it]｜[source=zulu]｜[result=zulù]
 [sl=en]｜[dl=fi]｜[source=zulu]｜[result=zulu]
 [sl=en]｜[dl=yi]｜[source=zulu]｜[result=zulu]
-
-
-
 [sl=en]｜[dl=iw]｜[source=automatic]｜[result=אוֹטוֹמָטִי]
 [sl=en]｜[dl=iw]｜[source=chinese]｜[result=סִינִית]
 [sl=en]｜[dl=iw]｜[source=haitian]｜[result=הארי]
@@ -12831,3 +12830,6 @@
 [sl=en]｜[dl=yi]｜[source=myanmar]｜[result=myanmar]
 [sl=en]｜[dl=yo]｜[source=myanmar]｜[result=madium]
 [sl=en]｜[dl=zu]｜[source=myanmar]｜[result=myanmar]
+
+
+[USER CACHES]

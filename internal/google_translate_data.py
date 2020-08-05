@@ -249,7 +249,7 @@ def language_name_to_code():
 
 def international_language_name_to_code():
     """
-    Translation of all the language names into all the languages available on Google Translate (+11200 translations/7〜9 hours of work)\n
+    Translation of all the language names into all the languages available on Google Translate (+12800 translations/8〜10 hours of work)\n
     Used to always get the correct language code, even if a language name is provided.\n
     © Anime no Sekai - 2020\n
     © Google Translate by Google LLC
