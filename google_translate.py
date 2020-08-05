@@ -57,8 +57,8 @@ driver = None
 gt_domain = 'translate.google.com'
 connected = False
 last_translation = ''
-translation_caches_path = os.path.dirname(os.path.abspath(__file__)) + '/'
-translation_caches_name = 'translation_caches.animenosekai'
+translation_caches_path = os.path.dirname(os.path.abspath(__file__)) + '/translation_caches/'
+translation_caches_name = 'translation_caches.animenosekai_caches'
 
 def google_translate_domain(domain='translate.google.com'):
     """
