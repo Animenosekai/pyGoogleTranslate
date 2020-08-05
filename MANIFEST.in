@@ -1,1 +1,1 @@
-recursive-include pyGoogleTranslate/translation_caches *
+recursive-include pyGoogleTranslate/internal *
