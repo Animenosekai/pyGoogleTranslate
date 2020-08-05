@@ -139,7 +139,7 @@ def browser(browser_name, executable_path="PATH"):
     global driver
     global driver_name
     global connected
-    if not driver is None:
+    if connected:
         browser_kill()
     if browser_name.lower() == 'firefox':
         from selenium.webdriver.firefox.options import Options
