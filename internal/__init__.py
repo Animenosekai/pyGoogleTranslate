@@ -1,5 +1,5 @@
 """
-Sets of internal and/or less used functions for pyGoogleTranslate.
+Set of internal and/or less used functions for pyGoogleTranslate.
 
 © Anime no Sekai - 2020
 """

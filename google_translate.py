@@ -17,8 +17,8 @@ from lifeeasy import write_file, today, current_time
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 
-from internal.caching import search_translation_cache, add_translation_cache
-from internal.language_code import verify_language_code
+from .internal.caching import search_translation_cache, add_translation_cache
+from .internal.language_code import verify_language_code
 
 
 class BrowserError(Exception):
@@ -105,17 +105,19 @@ def browser_kill():
     Kills the browser process in use.
     """
     global connected
-    if driver_name == 'Chrome' or driver_name == 'Firefox':
-        driver_process = psutil.Process(driver.service.process.pid)
-        if driver_process.is_running():
-            process = driver_process.children()
-            if process:
-                process = process[0]
-                if process.is_running():
-                    driver.quit()
-                else:
-                    process.kill()
-            connected = False
+    if connected:
+        if driver_name == 'Chrome' or driver_name == 'Firefox':
+            driver_process = psutil.Process(driver.service.process.pid)
+            if driver_process.is_running():
+                process = driver_process.children()
+                if process:
+                    process = process[0]
+                    if process.is_running():
+                        driver.quit()
+                    else:
+                        process.kill()
+                connected = False
+                
 
 def translate(text, destination_language, source_language="auto", cache=False, debug=False):
     """
@@ -124,7 +126,7 @@ def translate(text, destination_language, source_language="auto", cache=False, d
     Returns a string with the text translated.\n
     Returns "An error occured while translating: translation not found." if the translation was not found in the webpage. This might come from a mistyped language code.
     """
-    from internal.domain import gt_domain
+    from .internal.domain import gt_domain
     global last_translation
     if debug:
         write_file('logs.txt', today() + ' ' + current_time() + f'   text={text}｜sl={source_language}｜dl={destination_language} - Starting Translation...\n', append=True)
@@ -272,7 +274,7 @@ def detect_language(text, result_language='en'):
     """
     Returns the language of the given text.
     """
-    from internal.domain import gt_domain
+    from .internal.domain import gt_domain
     if driver is None:
         raise BrowserError("Browser is not set yet.\n Please set it with browser()")
     if not connected:
@@ -294,7 +296,7 @@ def transliterate(text, source_language="auto"):
     Returns the transliteration provided by Google Translate (if available)\n
     i.e Ohayou --> おはよう / おはよう --> Ohayou
     """
-    from internal.domain import gt_domain
+    from .internal.domain import gt_domain
     if driver is None:
         raise BrowserError("Browser is not set yet.\n Please set it with browser()")
     if not connected:
@@ -312,7 +314,7 @@ def definition(text, source_language="auto"):
     """
     Returns the word type (i.e Interjection, Noun), defintion (if available) and sentence example where the word could be used (if available)
     """
-    from internal.domain import gt_domain
+    from .internal.domain import gt_domain
     if driver is None:
         raise BrowserError("Browser is not set yet.\n Please set it with browser()")
     if not connected:
