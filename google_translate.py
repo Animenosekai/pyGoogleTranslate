@@ -39,7 +39,7 @@ driver = None
 connected = False
 last_translation = ''
 
-def browser(browser_name, executable_path="PATH"):
+def browser(browser_name, executable_path="PATH", no_sandbox=False):
     """
     To choose the headless browser used by pyGoogleTranslate.\n
     <executable_path> sets the executable path for your browser.\n
@@ -73,7 +73,8 @@ def browser(browser_name, executable_path="PATH"):
         chrome_options.headless = True
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-extensions")
-        #chrome_options.add_argument("--no-sandbox")
+        if no_sandbox:
+            chrome_options.add_argument("--no-sandbox")
         if executable_path == 'PATH':
             driver = webdriver.Chrome(options=chrome_options)
             connected = True

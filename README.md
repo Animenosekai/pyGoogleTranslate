@@ -118,6 +118,24 @@ import pyGoogleTranslate
 
 Data in `google_translate_data.py` are made by me except for the list of google translate domain names which I need to give credit to ssut in his project py-googletrans.
 
+You can change the google translate domain with:
+
+```python
+>>> from pyGoogleTranslate.internal.domain import google_translate_domain
+>>> google_translate_domain('<the new google translate domain>')
+'<the new domain is returned>'
+```
+
+You can try the new TTS Download function with:
+
+```python
+>>> from pyGoogleTranslate.internal.project.alpha.text_to_speech import text_to_speech
+>>> text_to_speech('Hello', 'en', '1')
+
+# The tts file is saved in your current directory
+# Note that you need to install googletrans for this.
+```
+
 ### Dependencies
 
 This module has three python module dependency: [Selenium](https://www.selenium.dev/), [psutil](https://pypi.org/project/psutil/) and [lifeeasy](https://pypi.org/project/lifeeasy/) used to automate browsers which are downloaded when installing pyGoogleTranslate with PIP.
