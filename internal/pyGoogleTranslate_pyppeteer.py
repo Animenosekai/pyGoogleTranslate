@@ -43,11 +43,13 @@ async def _launch():
 
 if isinstance(threading.current_thread(), threading._MainThread):
     print('Main Thread')
-    asyncio.get_event_loop().run_until_complete(_launch())
+    event_loop = asyncio.get_event_loop()
+    event_loop.run_until_complete(_launch())
 else:
     print('Not Main Thread')
     asyncio.set_event_loop(asyncio.new_event_loop())
-    asyncio.get_event_loop().run_until_complete(_launch())
+    event_loop = asyncio.get_event_loop()
+    event_loop.run_until_complete(_launch())
 
 async def _translate(text, destination_language, source_language="auto", cache=False, debug=False):
     """
@@ -195,11 +197,13 @@ def translate(text, destination_language, source_language="auto", cache=False, d
     Returns a string with the text translated.\n
     Returns "An error occured while translating: translation not found." if the translation was not found in the webpage. This might come from a mistyped language code.
     """
-    result = asyncio.get_event_loop().run_until_complete(_translate(text=text, destination_language=destination_language, source_language=source_language, cache=cache, debug=debug))
+    try:
+        result = event_loop.run_until_complete(_translate(text=text, destination_language=destination_language, source_language=source_language, cache=cache, debug=debug))
+    except:
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        event_loop = asyncio.get_event_loop()
+        result = event_loop.run_until_complete(_translate(text=text, destination_language=destination_language, source_language=source_language, cache=cache, debug=debug))
     return result
-
-
-
 
 
 async def _detect_language(text, result_language='en'):
@@ -262,7 +266,12 @@ def detect_language(text, result_language='en'):
     """
     Returns the language of the given text.
     """
-    result = asyncio.get_event_loop().run_until_complete(_detect_language(text=text, result_language=result_language))
+    try:
+        result = event_loop.run_until_complete(_detect_language(text=text, result_language=result_language))
+    except:
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        event_loop = asyncio.get_event_loop()
+        result = event_loop.run_until_complete(_detect_language(text=text, result_language=result_language))
     return result
 
 def transliterate(text, source_language="auto"):
@@ -270,12 +279,22 @@ def transliterate(text, source_language="auto"):
     Returns the transliteration provided by Google Translate (if available)\n
     i.e Ohayou --> おはよう / おはよう --> Ohayou
     """
-    result = asyncio.get_event_loop().run_until_complete(_transliterate(text=text, source_language=source_language))
+    try:
+        result = event_loop.run_until_complete(_transliterate(text=text, source_language=source_language))
+    except:
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        event_loop = asyncio.get_event_loop()
+        result = event_loop.run_until_complete(_transliterate(text=text, source_language=source_language))
     return result
 
 def definition(text, source_language="auto"):
     """
     Returns the word type (i.e Interjection, Noun), defintion (if available) and sentence example where the word could be used (if available)
     """
-    result = asyncio.get_event_loop().run_until_complete(_definition(text=text, source_language=source_language))
+    try:
+        result = event_loop.run_until_complete(_definition(text=text, source_language=source_language))
+    except:
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        event_loop = asyncio.get_event_loop()
+        result = event_loop.run_until_complete(_definition(text=text, source_language=source_language))
     return result
