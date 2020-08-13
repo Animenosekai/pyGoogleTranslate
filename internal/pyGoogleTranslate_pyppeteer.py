@@ -2,7 +2,6 @@ import asyncio
 from pyppeteer import launch
 from pyppeteer.errors import ElementHandleError
 
-import psutil
 from lifeeasy import write_file, today, current_time
 
 from .caching import search_translation_cache, add_translation_cache

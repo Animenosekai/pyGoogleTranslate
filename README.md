@@ -126,6 +126,39 @@ You can change the google translate domain with:
 '<the new domain is returned>'
 ```
 
+You can export your caches file with:
+```python
+>>> from pyGoogleTranslate.internal.caching import export_cache
+>>> export_cache()
+
+# The file is exported in the current directory
+```
+
+You can then import it with (for example after an update):
+```python
+>>> from pyGoogleTranslate.internal.caching import import_cache
+>>> import_cache('<the path to the cache file>')
+
+# The file is imported and merged with the current cache file
+```
+
+You can try using pyppeteer instead of Selenium with:
+
+```python
+>>> from pyGoogleTranslate.internal import pyGoogleTranslate_pyppeteer
+>>> pyGoogleTranslate_pyppeteer.translate('Hello', 'japanese')
+'こんにちは'
+
+>>> pyGoogleTranslate_pyppeteer.detect_language('Hola', 'es')
+'español'
+
+>>> pyGoogleTranslate_pyppeteer.transliterate('Ohayou')
+'おはよう'
+
+>>> pyGoogleTranslate_pyppeteer.definition('おやすみ')
+{'word_type': 'Noun', 'definition': '仕事などを休むこと。休暇。', 'example': '「一週間―をいただく」'}
+```
+
 You can try the new TTS Download function with:
 
 ```python

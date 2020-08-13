@@ -8,4 +8,4 @@ from . import caching
 from . import domain
 from . import google_translate_data
 from . import language_code
-from . import pyGoogleTranslate_pypeteer
+#from . import pyGoogleTranslate_pyppeteer
