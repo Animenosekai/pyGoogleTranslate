@@ -1,4 +1,5 @@
 import asyncio
+import threading
 from pyppeteer import launch
 from pyppeteer.errors import ElementHandleError
 
@@ -17,11 +18,21 @@ async def _launch():
     """
     global browser
     global page
-    browser = await launch()
+    browser = await launch(
+        handleSIGINT=False,
+        handleSIGTERM=False,
+        handleSIGHUP=False
+    )
     page = await browser.newPage()
     page.setDefaultNavigationTimeout(timeout=0)
 
-asyncio.get_event_loop().run_until_complete(_launch())
+if isinstance(threading.current_thread(), threading._MainThread):
+    print('Main Thread')
+    asyncio.get_event_loop().run_until_complete(_launch())
+else:
+    print('Not Main Thread')
+    asyncio.set_event_loop(asyncio.new_event_loop())
+    asyncio.get_event_loop().run_until_complete(_launch())
 
 async def _translate(text, destination_language, source_language="auto", cache=False, debug=False):
     """
