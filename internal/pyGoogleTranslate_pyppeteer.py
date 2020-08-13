@@ -21,7 +21,9 @@ async def _launch():
     browser = await launch(
         handleSIGINT=False,
         handleSIGTERM=False,
-        handleSIGHUP=False
+        handleSIGHUP=False,
+        headless=True,
+        args=['--no-sandbox']
     )
     page = await browser.newPage()
     page.setDefaultNavigationTimeout(timeout=0)
