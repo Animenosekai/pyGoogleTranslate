@@ -1,5 +1,6 @@
 import asyncio
 import threading
+
 from pyppeteer import launch
 from pyppeteer.errors import ElementHandleError
 
@@ -7,6 +8,7 @@ from lifeeasy import write_file, today, current_time
 
 from .caching import search_translation_cache, add_translation_cache
 from .language_code import verify_language_code
+from .chrome_executable import chrome_executable_path
 
 last_translation = ''
 browser = None
@@ -18,13 +20,24 @@ async def _launch():
     """
     global browser
     global page
-    browser = await launch(
-        handleSIGINT=False,
-        handleSIGTERM=False,
-        handleSIGHUP=False,
-        headless=True,
-        args=['--no-sandbox']
-    )
+    if chrome_executable_path == '':
+        browser = await launch(
+            handleSIGINT=False,
+            handleSIGTERM=False,
+            handleSIGHUP=False,
+            headless=True,
+            args=['--no-sandbox']
+        )
+    else:
+        browser = await launch(
+            handleSIGINT=False,
+            handleSIGTERM=False,
+            handleSIGHUP=False,
+            headless=True,
+            args=['--no-sandbox'],
+            executablePath=chrome_executable_path
+        )
+        
     page = await browser.newPage()
     page.setDefaultNavigationTimeout(timeout=0)
 
