@@ -1,3 +1,10 @@
+# Warning
+This module uses a browser to load the webpages and this method is pretty inefficient.
+
+If you look for a better way of translating things, translierating, etc. I recommend you to use one of my other module [`translatepy`](https://github.com/Animenosekai/translate)
+
+
+
 # pyGoogleTranslate
  A python module for Google Translate (without using the API)
 
